@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -45,30 +46,43 @@
     <Reference Include="System.Xml" />
     <Reference Include="TechTalk.SpecFlow, Version=1.9.0.77, Culture=neutral, PublicKeyToken=0778194805d6db41, processorArchitecture=MSIL">
       <HintPath>packages\SpecFlow.1.9.0\lib\net35\TechTalk.SpecFlow.dll</HintPath>
-      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BDD\BerlinClockFeatureSteps.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="BDD\BerlinClockFeatureSteps.feature.cs">
+    <Compile Include="Clock.cs" />
+    <Compile Include="ClockDecorator.cs" />
+    <Compile Include="Entities\Time.cs" />
+    <Compile Include="FiveHoursClockDecorator.cs" />
+    <Compile Include="FiveMinutesClockDecorator.cs" />
+    <Compile Include="OneHoursClockDecorator.cs" />
+    <Compile Include="OneMinutesClockDecorator.cs" />
+    <Compile Include="Resources\ClockLampRepresentationResources1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BerlinClockFeatureSteps.feature</DependentUpon>
+      <DependentUpon>ClockLampRepresentationResources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Classes\ITimeConverter.cs" />
-    <Compile Include="Classes\TimeConverter.cs" />
+    <Compile Include="SecondsClockDecorator.cs" />
+    <Compile Include="Interfaces\IClock.cs" />
+    <Compile Include="Interfaces\ITimeParser.cs" />
+    <Compile Include="TimeParser.cs" />
+    <Compile Include="Interfaces\ITimeValidator.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Interfaces\ITimeConverter.cs" />
+    <Compile Include="TimeConverter.cs" />
+    <Compile Include="Validators\TimeValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <None Include="BDD\BerlinClockFeatureSteps.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>BerlinClockFeatureSteps.feature.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\ClockLampRepresentationResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ClockLampRepresentationResources1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

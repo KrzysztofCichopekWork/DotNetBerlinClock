@@ -1,7 +1,7 @@
 ﻿using System;
-using TechTalk.SpecFlow;
+using BerlinClock.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Linq;
+using TechTalk.SpecFlow;
 
 namespace BerlinClock
 {
@@ -11,18 +11,16 @@ namespace BerlinClock
         private ITimeConverter berlinClock = new TimeConverter();
         private String theTime;
 
-        
         [When(@"the time is ""(.*)""")]
         public void WhenTheTimeIs(string time)
         {
             theTime = time;
         }
-        
+
         [Then(@"the clock should look like")]
         public void ThenTheClockShouldLookLike(string theExpectedBerlinClockOutput)
         {
-            Assert.AreEqual(berlinClock.convertTime(theTime), theExpectedBerlinClockOutput);
+            Assert.AreEqual(berlinClock.ConvertTime(theTime), theExpectedBerlinClockOutput);
         }
-
     }
 }
